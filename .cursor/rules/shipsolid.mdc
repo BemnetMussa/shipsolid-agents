@@ -1,5 +1,5 @@
 ---
-description: ShipSolid non-negotiables — efficient code that does not break; agent roles over vibes.
+description: ShipSolid non-negotiables — efficient code that does not break; orchestrate algorithm-reasoning then test-agent before done.
 alwaysApply: true
 ---
 
@@ -16,12 +16,19 @@ Reliable code means:
 
 Not the destination: cosmetics/readability-as-product, approving every micro-decision, or dumping the whole algorithm KB into context.
 
+## Orchestration
+
+For implement / optimize / “make it reliable” work, follow **`shipsolid`** (`.cursor/skills/shipsolid/SKILL.md`):
+
+1. Intent → 2. **algorithm-reasoning** → 3. Code → 4. **test-agent** → 5. Suite green → DONE  
+
+Do not call work done after code that only “looks good.”
+
 ## Roles
 
-- **algorithm-reasoning** — pick pattern(s), plan efficiency, write from the knowledge base.
-- **test-agent** — grow and keep the test suite; run it; fail loud.
-
-Prefer invoking the right role over one agent doing unchecked “looks good” coding.
+- **shipsolid** — orchestrator (full pipeline)
+- **algorithm-reasoning** — efficiency / algorithm judgment (KB)
+- **test-agent** — growing test suite; run; fail loud
 
 ## Knowledge base
 

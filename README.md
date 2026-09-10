@@ -21,15 +21,18 @@ Not another notes wiki. This repo is the **car** — agent skills/rules that tur
 
 | Skill | Job |
 | --- | --- |
+| `shipsolid` | **Orchestrator** — full pipeline before “done” |
 | `algorithm-reasoning` | Classify pattern(s), plan efficiency, write from KB templates |
 | `test-agent` | Add/keep tests for current scope, run them, fail loud on regressions |
+
+Pipeline: **intent → algorithm-reasoning → code → test-agent → suite green → DONE**
 
 ## Quick start (Cursor)
 
 1. Clone this repo (or add it as a submodule / open alongside your project).
 2. Point the algorithm skill at your local KB clone (see skill files).
-3. In chat: use **algorithm-reasoning** when writing/optimizing logic; use **test-agent** when proving code doesn’t break.
-4. Prefer two roles over one mega-agent — writers shouldn’t only grade their own homework.
+3. In chat: say **shipsolid** (or “make this ship-solid”) so the orchestrator runs both pillars.
+4. Or call **algorithm-reasoning** / **test-agent** alone when you only need one role.
 
 ## Philosophy
 
