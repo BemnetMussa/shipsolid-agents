@@ -1,87 +1,56 @@
 # shipsolid-agents
 
-**Cursor agent kit for reliable code:** efficient enough + doesn’t break.
+You use this so agent-written code is **reliable**: efficient enough, and it doesn’t break.
 
-If you’re reading this months later (or you’re a contributor): this is **not** a DSA wiki and **not** a model we train. It’s a set of **agent skills + rules** so that when someone says “build this,” the agent doesn’t stop at code that *looks* good — it picks a solid approach, writes it, tests the current scope, and only then calls it done.
+This is not a notes wiki. It’s a Cursor **agent kit** (skills + rules). When you say build something, the agent should pick a solid approach, write the code, test what exists at this stage, and only then call it done.
 
----
+## What “reliable” means here
 
-## The idea in one breath
+1. **Efficient** — right algorithm / complexity for the constraints  
+2. **Doesn’t break** — tested for the current scope; as the system grows, tests grow too; old tests stay  
 
-| | |
-| --- | --- |
-| **Problem** | Agents write code that often works on the happy path but can use the wrong algorithm, miss edges, or hide bad complexity. |
-| **Destination (A → B)** | **Reliable code** — doesn’t break on the scenarios for this stage of the system, and is efficient enough for the constraints. |
-| **How** | Two non‑negotiables, enforced by agent roles (not by babysitting every decision). |
-| **Not the goal** | Prettier style, human approving every step, or rewriting the learning notes repo. |
+Not the goal: prettier code, or you approving every tiny decision.
 
-**Non‑negotiables**
+## Two repos
 
-1. **Efficient** — right complexity / pattern for the constraints.  
-2. **Doesn’t break** — tests for *current* scope; suite grows as the system grows; **old tests stay**.
+- **[algorithm-knowledge-base](https://github.com/BemnetMussa/algorithm-knowledge-base)** — learning notes (patterns, templates). You keep that for learning.  
+- **This repo** — agents that *use* those notes to ship reliable code  
 
-Logic matters more than language or stack. Language is not a barrier.
+Your real app stays in your project. You open or point Cursor at this kit so the skills load.
 
----
-
-## Two repos (don’t mix them up)
-
-| Repo | What it is |
-| --- | --- |
-| [algorithm-knowledge-base](https://github.com/BemnetMussa/algorithm-knowledge-base) | **Learning map** — human-friendly algorithm notes, templates, pitfalls. Leave it for learning. |
-| **shipsolid-agents** (this repo) | **The car** — agent skills/rules that *use* that map to ship reliable code. |
-
-Your real app stays in whatever project you’re building. Open or reference this kit so Cursor can load the skills.
-
----
-
-## What’s in the box
-
-| Path | Role |
-| --- | --- |
-| `.cursor/skills/shipsolid` | **Orchestrator** — full pipeline before “done” |
-| `.cursor/skills/algorithm-reasoning` | Efficiency pillar — classify pattern(s), plan Big O, code from KB templates |
-| `.cursor/skills/test-agent` | Doesn’t-break pillar — add/keep tests, run them, fail loud |
-| `.cursor/rules/shipsolid.mdc` | Always-on reminder of the non‑negotiables |
-| `examples/hello-reliable` | Tiny demo: efficient Two Sum + edge unit tests |
-
-**Pipeline (what “shipsolid” means):**
+## How it runs
 
 ```text
-intent → algorithm-reasoning → code → test-agent → suite green → DONE
+intent → algorithm-reasoning → code → test-agent → tests pass → done
 ```
 
-Tests grow with the build: one function → unit/edges; wired into other pieces → integration; **never throw away prior tests**.
+| Skill | What it does |
+| --- | --- |
+| `shipsolid` | Runs the full pipeline above |
+| `algorithm-reasoning` | Picks the pattern, plans efficiency, writes from the KB |
+| `test-agent` | Adds/keeps tests, runs them, fails loud |
 
----
+Rules live in `.cursor/rules/shipsolid.mdc`.
 
-## Quick start (Cursor)
+## Use it
 
-1. Clone this repo (and ideally clone the [knowledge base](https://github.com/BemnetMussa/algorithm-knowledge-base) locally — skills default to `C:/Users/bemne/algorithm-knowledge-base`; change paths in the skill files if yours differs).
-2. Open this repo in Cursor (or open it alongside your app).
-3. In chat say **`shipsolid`** or “make this ship-solid” so the orchestrator runs both pillars.
-4. Or call **`algorithm-reasoning`** / **`test-agent`** alone when you only need one role.
+1. Clone this repo. Clone the knowledge base too if you can (skills look for it under `C:/Users/bemne/algorithm-knowledge-base` — change the path in the skill files if yours is different).  
+2. Open this repo in Cursor (alone or next to your app).  
+3. In chat say **shipsolid** or “make this ship-solid.”  
 
-### Demo
+Or call `algorithm-reasoning` / `test-agent` on their own if you only need one.
+
+## Demo
+
+Small example: efficient Two Sum + edge tests.
 
 ```bash
 cd examples/hello-reliable
 python -m unittest test_two_sum.py -v
 ```
 
-That’s a **unit-scope** example on purpose: prove edges for one function. Integration comes later when you wire things together.
+One function on purpose. When you wire more pieces later, you add integration tests and keep these.
 
----
+## If you change this repo
 
-## For contributors
-
-- **Change agent behavior** here (skills/rules) — not by pasting the whole KB into prompts.  
-- **Change learning notes** in [algorithm-knowledge-base](https://github.com/BemnetMussa/algorithm-knowledge-base).  
-- Keep skills thin: index → open only the matched notes (progressive disclosure).  
-- Don’t expand the demo into a full product; it’s a teaching loop for the pipeline.
-
----
-
-## Status
-
-Scaffold live: orchestrator + efficiency skill + test-agent + hello-reliable demo. Next ideas (when we want them): CI on the demo, more examples — not required to understand the idea.
+Edit skills/rules here. Edit learning notes in the knowledge base. Keep skills thin — don’t dump the whole KB into every prompt.
