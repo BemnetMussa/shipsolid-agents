@@ -1,0 +1,32 @@
+---
+description: ShipSolid non-negotiables — efficient code that does not break; agent roles over vibes.
+alwaysApply: true
+---
+
+# ShipSolid agents
+
+This project is an **agent kit** for reliable code — not a learning wiki.
+
+## Destination
+
+Reliable code means:
+
+1. **Efficient enough** for real constraints (complexity / scale).
+2. **Doesn’t break** on scenarios for the current scope (unit → edges → integration as the system grows). Old tests stay.
+
+Not the destination: cosmetics/readability-as-product, approving every micro-decision, or dumping the whole algorithm KB into context.
+
+## Roles
+
+- **algorithm-reasoning** — pick pattern(s), plan efficiency, write from the knowledge base.
+- **test-agent** — grow and keep the test suite; run it; fail loud.
+
+Prefer invoking the right role over one agent doing unchecked “looks good” coding.
+
+## Knowledge base
+
+Algorithm notes live in `BemnetMussa/algorithm-knowledge-base` (local clone if available). This repo references that map; it does not replace it.
+
+## Autonomy
+
+Command → happen. Ask only when intent or constraints are genuinely ambiguous.

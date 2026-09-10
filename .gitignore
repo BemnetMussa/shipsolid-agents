@@ -1,0 +1,15 @@
+# shipsolid-agents
+
+.env
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+build/
+.idea/
+.vscode/
+*.log
