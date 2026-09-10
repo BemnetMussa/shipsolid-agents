@@ -34,6 +34,15 @@ Pipeline: **intent → algorithm-reasoning → code → test-agent → suite gre
 3. In chat: say **shipsolid** (or “make this ship-solid”) so the orchestrator runs both pillars.
 4. Or call **algorithm-reasoning** / **test-agent** alone when you only need one role.
 
+## Demo
+
+`examples/hello-reliable` — Two Sum (hash map, O(n)) + edge unit tests.
+
+```bash
+cd examples/hello-reliable
+python -m unittest test_two_sum.py -v
+```
+
 ## Philosophy
 
 - **Destination:** reliable code (doesn’t break + efficient enough).

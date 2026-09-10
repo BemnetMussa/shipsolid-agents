@@ -12,6 +12,10 @@ Agent kit for **ship-solid code**: efficient + doesn’t break.
 
 - `.cursor/rules/shipsolid.mdc` — always-on non-negotiables
 
+## Demo
+
+- `examples/hello-reliable` — Two Sum + unit/edge tests (`python -m unittest test_two_sum.py -v`)
+
 ## Related
 
 - Knowledge base (learning): https://github.com/BemnetMussa/algorithm-knowledge-base
