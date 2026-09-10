@@ -4,6 +4,8 @@ You use this so agent-written code is **reliable**: efficient enough, and it doe
 
 This is not a notes wiki. It’s a Cursor **agent kit** (skills + rules). When you say build something, the agent should pick a solid approach, write the code, test what exists at this stage, and only then call it done.
 
+Want the case for the problem and why this approach (not a wiki, not “just prompt harder”)? Read **[WHY.md](./WHY.md)**.
+
 ## What “reliable” means here
 
 1. **Efficient** — right algorithm / complexity for the constraints  
